@@ -21,7 +21,7 @@ import stat
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-STORAGE_ROOT = Path(os.environ.get("VERITAS_STORAGE", REPO_ROOT / "build_artifacts")).resolve()
+STORAGE_ROOT = Path(os.environ.get("PIXELPROOF_STORAGE", REPO_ROOT / "build_artifacts")).resolve()
 CASES_DIR = STORAGE_ROOT / "cases"
 EXAMPLES_DIR = REPO_ROOT / "assets" / "examples"
 SAMPLE_IMAGE = REPO_ROOT / "assets" / "sample images" / "sampleImg.jpeg"

@@ -32,7 +32,7 @@ from PIL import Image
 from .util import error_result, make_result
 
 GENESIS_HASH = "0" * 64
-FORMAT = "veritas-ledger/1"
+FORMAT = "pixelproof-ledger/1"
 PERCEPTUAL = {"phash": imagehash.phash, "dhash": imagehash.dhash,
               "ahash": imagehash.average_hash}
 

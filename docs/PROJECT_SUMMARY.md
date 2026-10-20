@@ -1,4 +1,4 @@
-# Veritas — Project Summary
+# PixelProof — Project Summary
 
 **Version**: 3.0.0 (2026-09-29) · see [CHANGELOG.md](../CHANGELOG.md)
 

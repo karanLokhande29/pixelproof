@@ -1,4 +1,4 @@
-# 🔍 Veritas — Development & Setup Notes
+# 🔍 PixelProof — Development & Setup Notes
 
 Short setup guide. For the feature overview see [README.md](README.md); for
 module APIs see [docs/API.md](docs/API.md).
@@ -40,7 +40,7 @@ docs/                API, deployment, project report
 ## 3. How `app.py` works
 
 - **Uploads** are written to a per-session temporary directory
-  (`tempfile.mkdtemp(prefix="veritas_")`) under a random file name. The
+  (`tempfile.mkdtemp(prefix="pixelproof_")`) under a random file name. The
   previous upload is deleted when a new one arrives; results are cleared when
   the image changes (tracked by SHA-256 of the upload).
 - **No preprocessing.** Every tab receives the path of the original file.

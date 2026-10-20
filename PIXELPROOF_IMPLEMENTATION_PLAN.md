@@ -1,9 +1,9 @@
-# VERITAS X — Complete 12-Hour Implementation Plan
+# PIXELPROOF — Complete 12-Hour Implementation Plan
 
 > **Canonical build specification.** Version 1.0 · 20 October 2026  
-> **Project:** Veritas X — An Explainable Multi-Technique Visual Evidence Investigation Platform  
+> **Project:** PixelProof — An Explainable Multi-Technique Visual Evidence Investigation Platform  
 > **Build context:** 1 developer, 1 workstation, Claude Code, hard 12-hour execution window.  
-> **Authoritative companion:** `VERITAS_X_CLAUDE_PROMPTS.md`. Read both before making changes.  
+> **Authoritative companion:** `PIXELPROOF_CLAUDE_PROMPTS.md`. Read both before making changes.  
 > **Source repository:** https://github.com/CodeRafay/Forensic-Image-Analysis-Toolkit  
 > **Source ZIP:** https://github.com/CodeRafay/Forensic-Image-Analysis-Toolkit/archive/refs/heads/main.zip  
 > **Working assumption:** Original repository extracted or cloned into the directory from which Claude Code is launched. Never assume its tests pass until executed locally.
@@ -147,8 +147,8 @@ Do not change this contract in the original modules. Make a separate API seriali
 │   │   └── styles/
 │   └── vite.config.ts
 ├── build_artifacts/             # gitignored cases, results, logs
-├── VERITAS_X_IMPLEMENTATION_PLAN.md
-├── VERITAS_X_CLAUDE_PROMPTS.md
+├── PIXELPROOF_IMPLEMENTATION_PLAN.md
+├── PIXELPROOF_CLAUDE_PROMPTS.md
 ├── BUILD_STATUS.md             # created by Claude
 ├── BUG_BACKLOG.md              # created by Claude
 └── FINAL_BUILD_REPORT.md       # created by Claude at end
@@ -404,7 +404,7 @@ Claude Code must create/update:
 - `BUILD_STATUS.md` — start time, phase, completed acceptance IDs, next action, actual commands/results, build choice, remaining time.
 - `BUG_BACKLOG.md` — ranked issues, deferred work and fixes as per Section 8.
 - `FINAL_BUILD_REPORT.md` — feature inventory (working / partially working / deferred), passing test counts, runtime and install instructions, known limitations, borrowed vs newly built components, demo flow, and final archive structure.
-- `README_VERITAS_X.md` — student-ready description, problem statement, architecture, setup and run commands, screenshots if available, source attribution, algorithm explanations and evaluation honesty.
+- `README.md` — student-ready description, problem statement, architecture, setup and run commands, screenshots if available, source attribution, algorithm explanations and evaluation honesty.
 
 ### Technical attribution
 
@@ -438,7 +438,7 @@ Keep 2–3 pre-tested examples small enough for fast inference; also demonstrate
 - [ ] No fake probability/authenticity score, made-up runtime, fabricated labels or data.
 - [ ] Heavy analyses don't lock navigation indefinitely.
 - [ ] Clean launch instructions validated on one machine.
-- [ ] `BUILD_STATUS.md`, `BUG_BACKLOG.md`, `FINAL_BUILD_REPORT.md`, and `README_VERITAS_X.md` complete.
+- [ ] `BUILD_STATUS.md`, `BUG_BACKLOG.md`, `FINAL_BUILD_REPORT.md`, and `README.md` complete.
 
 ## Appendix A — Authoritative external references
 
@@ -473,4 +473,4 @@ Keep 2–3 pre-tested examples small enough for fast inference; also demonstrate
 19. SAR-Turbo4: Saliency Aware Quantization for vector databases
 20. Composition Detection of Havenly Bodies
 
-The proposed Veritas X problem is not titled in this list. Novelty means meaningful integration and user workflow contribution, **not** that no related image-forensics research exists.
+The proposed PixelProof problem is not titled in this list. Novelty means meaningful integration and user workflow contribution, **not** that no related image-forensics research exists.

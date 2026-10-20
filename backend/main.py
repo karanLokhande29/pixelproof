@@ -1,5 +1,5 @@
 """
-Veritas X API. Thin FastAPI adapter: validated requests -> trusted registry ->
+PixelProof API. Thin FastAPI adapter: validated requests -> trusted registry ->
 unmodified upstream `analysis.*` entry point (in a bounded worker process) ->
 serializer -> per-case local storage.
 
@@ -28,7 +28,7 @@ from .serializer import json_safe
 from .storage import REPO_ROOT, STORAGE_ROOT, StorageError, valid_id
 
 API_VERSION = "1.0.0"
-log = logging.getLogger("veritas.api")
+log = logging.getLogger("pixelproof.api")
 FRONTEND_DIST = REPO_ROOT / "frontend" / "dist"
 MAX_BODY = MAX_UPLOAD_BYTES + 1024 * 1024  # file + multipart overhead
 
@@ -44,7 +44,7 @@ async def lifespan(app):
     state["jobs"].shutdown()
 
 
-app = FastAPI(title="Veritas X API", version=API_VERSION, lifespan=lifespan)
+app = FastAPI(title="PixelProof API", version=API_VERSION, lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
                    allow_methods=["*"], allow_headers=["*"])
 
@@ -102,7 +102,7 @@ def health():
                    "module_found": importlib.util.find_spec(f"analysis.{registry.TECHNIQUES[t['id']]['module']}") is not None}
                   for t in registry.public_list()]
     return {
-        "service": "veritas-x-api", "version": API_VERSION, "status": "ok",
+        "service": "pixelproof-api", "version": API_VERSION, "status": "ok",
         "techniques": techniques,
         "all_technique_modules_found": all(t["module_found"] for t in techniques),
         "c2pa_reader_installed": importlib.util.find_spec("c2pa") is not None,
@@ -369,7 +369,7 @@ def ledger_add(body: LedgerAdd):
     case = need_case(body.case_id)
     rec = state["ledger"].add(str(store().original_path(case)),
                               label=case["original"]["display_name"],
-                              note=body.note or f"Veritas X case {case['id']}")
+                              note=body.note or f"PixelProof case {case['id']}")
     return rec
 
 
@@ -384,7 +384,7 @@ def ledger_check(case_id: str):
 @app.get("/api/ledger/export")
 def ledger_export():
     return Response(state["ledger"].export(), media_type="application/json",
-                    headers={"Content-Disposition": 'attachment; filename="veritas-ledger.json"'})
+                    headers={"Content-Disposition": 'attachment; filename="pixelproof-ledger.json"'})
 
 
 @app.post("/api/ledger/import")
@@ -395,7 +395,7 @@ async def ledger_import(file: UploadFile = File(...)):
     try:
         return state["ledger"].import_(data)
     except (ValueError, KeyError, TypeError) as e:
-        raise HTTPException(422, f"not a valid veritas ledger: {e}")
+        raise HTTPException(422, f"not a valid pixelproof ledger: {e}")
 
 
 @app.delete("/api/ledger")
@@ -418,7 +418,7 @@ def _selected(results: str | None):
 def report_json(case_id: str, results: str | None = Query(default=None), download: bool = False):
     case = need_case(case_id)
     rep = reports.build(store(), case, _selected(results))
-    headers = {"Content-Disposition": f'attachment; filename="veritas-x-{case_id}.json"'} if download else {}
+    headers = {"Content-Disposition": f'attachment; filename="pixelproof-{case_id}.json"'} if download else {}
     return JSONResponse(rep, headers=headers)
 
 
@@ -428,7 +428,7 @@ def report_html(case_id: str, results: str | None = Query(default=None), downloa
     rep = reports.build(store(), case, _selected(results))
     disp = "attachment" if download else "inline"
     return HTMLResponse(reports.render_html(store(), case, rep),
-                        headers={"Content-Disposition": f'{disp}; filename="veritas-x-{case_id}.html"',
+                        headers={"Content-Disposition": f'{disp}; filename="pixelproof-{case_id}.html"',
                                  "Content-Security-Policy": "default-src 'none'; img-src data:; style-src 'unsafe-inline'"})
 
 

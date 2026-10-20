@@ -1,4 +1,4 @@
-# Veritas X API layer, on top of the upstream ../requirements.txt
+# PixelProof API layer, on top of the upstream ../requirements.txt
 # (install both: pip install -r requirements.txt -r backend/requirements-api.txt)
 # Versions verified on Python 3.12.10 / Windows 11, October 2026.
 fastapi==0.153.0

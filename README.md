@@ -1,11 +1,11 @@
-# Veritas X — An Explainable Multi-Technique Visual Evidence Investigation Platform
+# PixelProof — An Explainable Multi-Technique Visual Evidence Investigation Platform
 
 B.Tech AI — Computer Vision mini-project. A local web application for **image-integrity triage**: open a case for a
 photo, run independent published image-forensics methods on the exact uploaded bytes, inspect each method's
 output against the original, compare methods side by side, check provenance, and export a report.
 
 > **Every result is an indicator, not proof.** Each method detects one kind of trace under stated conditions.
-> A forged image can pass every test; an unedited one can trigger findings. Veritas X has **no** authenticity
+> A forged image can pass every test; an unedited one can trigger findings. PixelProof has **no** authenticity
 > score, manipulation probability, consensus verdict or legal-admissibility assessment — by design.
 
 ---
@@ -14,7 +14,7 @@ output against the original, compare methods side by side, check provenance, and
 
 Photos are routinely submitted as evidence of something: an insurance claim, a news tip, a marketplace listing,
 an academic figure. Checking them today means running scattered tools and copying numbers by hand, and the
-usual "AI says 87 % fake" answer is not defensible. Veritas X gives an investigator one workflow that keeps the
+usual "AI says 87 % fake" answer is not defensible. PixelProof gives an investigator one workflow that keeps the
 original file untouched and hashed, runs several **independent** classical CV techniques, shows **what each one
 measured and what it cannot see**, and produces a reproducible report.
 
@@ -106,9 +106,16 @@ Verified on Windows 11, Python 3.12.10, Node 22.20.0 / npm 10.9.3. The upstream 
 install on Python 3.12 (upstream targets 3.10, which also works).
 
 ```bat
-setup_veritas.bat          :: once: .venv, pip install (upstream pins + backend/requirements-api.txt), npm ci, UI build
-start_veritas.bat          :: API + built UI  ->  http://127.0.0.1:8000
+setup_pixelproof.bat          :: once: .venv, pip install (upstream pins + backend/requirements-api.txt), npm ci, UI build
+start_pixelproof.bat          :: API + built UI  ->  http://127.0.0.1:8000
 start_streamlit_fallback.bat :: original upstream Streamlit app -> http://localhost:8501
+```
+
+macOS / Linux (verified on macOS, Apple Silicon, Python 3.13, Node 25):
+
+```bash
+./setup_mac.sh               # once: .venv, pip install, npm ci, UI build
+./start_mac.sh               # API + built UI  ->  http://127.0.0.1:8000
 ```
 
 Manual equivalent (any OS):
@@ -124,14 +131,14 @@ python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000    # open http:/
 Development with hot reload: `powershell -ExecutionPolicy Bypass -File launch\dev.ps1`
 (API on :8000, Vite on http://127.0.0.1:5173 proxying `/api`).
 
-Optional: set `VERITAS_LEDGER_KEY` before starting the API to HMAC-sign ledger exports.
-Optional: `VERITAS_STORAGE` to move case storage (default `build_artifacts/`).
+Optional: set `PIXELPROOF_LEDGER_KEY` before starting the API to HMAC-sign ledger exports.
+Optional: `PIXELPROOF_STORAGE` to move case storage (default `build_artifacts/`).
 
 Troubleshooting:
 
 - `ImportError: DLL load failed ... The filename or extension is too long` — the project folder is too deep for
   Windows' 260-character path limit (Pillow's DLL lives deep inside `.venv`). Move the folder to a shorter path
-  (e.g. `C:\veritas-x`) and run `setup_veritas.bat` again.
+  (e.g. `C:\pixelproof`) and run `setup_pixelproof.bat` again.
 - Port 8000 busy — run `.venv\Scripts\python -m uvicorn backend.main:app --port 8001` and open that port.
 - `python -m pytest` complains about `--cov` — the upstream `pytest.ini` expects `pytest-cov`; use
   `python -m unittest discover -s tests -t .` or `pytest -o addopts=""`.
@@ -140,7 +147,7 @@ Troubleshooting:
 ## 7. Tests
 
 ```bash
-python -m unittest discover -s tests -t .              # upstream 142 + Veritas X API tests (one command)
+python -m unittest discover -s tests -t .              # upstream 142 + PixelProof API tests (one command)
 python -m pytest tests/test_api.py -o addopts=""       # API tests only (upstream pytest.ini needs pytest-cov)
 cd frontend && npm run typecheck && npm run build
 # browser end-to-end (servers running; uses the installed Microsoft Edge via Playwright):
@@ -169,6 +176,6 @@ Actual counts and timings are in `FINAL_BUILD_REPORT.md`.
 ## 9. License and attribution
 
 The upstream code is © 2025 Rafay Adeel under the BSD 3-Clause License (see `LICENSE`, retained unchanged). Its
-notice and disclaimer apply to the redistributed analysis modules. The Veritas X integration layer (backend,
+notice and disclaimer apply to the redistributed analysis modules. The PixelProof integration layer (backend,
 frontend, tests, scripts, docs listed above) is the new contribution of this project; it does not claim to have
 invented any of the forensic algorithms.

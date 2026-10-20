@@ -76,7 +76,7 @@ edits, not deliberate ones.
 
 ## Export and import
 
-`export_ledger` writes JSON: `{"format": "veritas-ledger/1", "exported_utc",
+`export_ledger` writes JSON: `{"format": "pixelproof-ledger/1", "exported_utc",
 "records", "signature"}`. The signature covers the canonical JSON of
 everything except itself:
 

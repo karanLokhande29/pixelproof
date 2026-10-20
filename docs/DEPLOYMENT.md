@@ -1,6 +1,6 @@
-# Deployment Guide — Veritas
+# Deployment Guide — PixelProof
 
-Veritas is a single Streamlit app (`app.py`) with no database and no external
+PixelProof is a single Streamlit app (`app.py`) with no database and no external
 services. Everything a visitor does (uploads, results, hash ledger) lives in
 their Streamlit session.
 
@@ -76,10 +76,10 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 ```
 
 ```bash
-docker build -t veritas .
-docker run -p 8501:8501 veritas
+docker build -t pixelproof .
+docker run -p 8501:8501 pixelproof
 # optional HMAC key for ledger exports:
-docker run -p 8501:8501 -v "$PWD/secrets.toml:/app/.streamlit/secrets.toml:ro" veritas
+docker run -p 8501:8501 -v "$PWD/secrets.toml:/app/.streamlit/secrets.toml:ro" pixelproof
 ```
 
 No volumes are required: the app keeps no state on disk between sessions.
@@ -118,7 +118,7 @@ Add TLS (e.g. Let's Encrypt).
 - **Several instances**: session state (results, ledger) is in process memory,
   so a load balancer needs sticky sessions.
 - **Temp cleanup**: per-session directories are created with
-  `tempfile.mkdtemp`; on a long-running server, clean old `veritas_*`
+  `tempfile.mkdtemp`; on a long-running server, clean old `pixelproof_*`
   directories in the temp dir periodically.
 - **Secrets**: keep `LEDGER_KEY` in the host's secret store, never in git.
 - **What the ledger is not**: server-clock timestamps and an HMAC key held by

@@ -1,5 +1,5 @@
 """
-Veritas X API tests (new work, not upstream). Real HTTP calls through
+PixelProof API tests (new work, not upstream). Real HTTP calls through
 FastAPI's TestClient against the real analysis modules; storage goes to a
 temporary directory.
 """
@@ -16,9 +16,9 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="veritas_api_test_"))
-os.environ["VERITAS_STORAGE"] = str(TMP)
-os.environ.pop("VERITAS_LEDGER_KEY", None)
+TMP = Path(tempfile.mkdtemp(prefix="pixelproof_api_test_"))
+os.environ["PIXELPROOF_STORAGE"] = str(TMP)
+os.environ.pop("PIXELPROOF_LEDGER_KEY", None)
 
 from fastapi.testclient import TestClient  # noqa: E402
 
@@ -240,7 +240,7 @@ class APITest(unittest.TestCase):
     def test_ledger_roundtrip_hmac(self):
         case = self.upload_ok(SAMPLE)
         try:
-            os.environ["VERITAS_LEDGER_KEY"] = "test-key-1"
+            os.environ["PIXELPROOF_LEDGER_KEY"] = "test-key-1"
             self.c.delete("/api/ledger")
             self.c.post("/api/ledger/records", json={"case_id": case["id"]})
             exported = self.c.get("/api/ledger/export").content
@@ -250,16 +250,16 @@ class APITest(unittest.TestCase):
             self.assertTrue(ok["accepted"])
             self.assertTrue(ok["signature_valid"])
             self.c.delete("/api/ledger")
-            os.environ["VERITAS_LEDGER_KEY"] = "a-different-key"
+            os.environ["PIXELPROOF_LEDGER_KEY"] = "a-different-key"
             bad = self.c.post("/api/ledger/import", files={"file": ("l.json", exported)}).json()
             self.assertFalse(bad["accepted"])
             self.assertFalse(bad["signature_valid"])
-            del os.environ["VERITAS_LEDGER_KEY"]
+            del os.environ["PIXELPROOF_LEDGER_KEY"]
             nokey = self.c.post("/api/ledger/import", files={"file": ("l.json", exported)}).json()
             self.assertFalse(nokey["accepted"])
             self.assertIsNone(nokey["signature_valid"])
         finally:
-            os.environ.pop("VERITAS_LEDGER_KEY", None)
+            os.environ.pop("PIXELPROOF_LEDGER_KEY", None)
             self.c.delete("/api/ledger")
 
     # T13 / T14
@@ -269,7 +269,7 @@ class APITest(unittest.TestCase):
                      json={"notes": "<script>alert(1)</script> & note", "title": "Report <b>case</b>"})
         _, r = self.run_tech(case["id"], "ela", {"quality": 70})
         rep = self.c.get(f"/api/cases/{case['id']}/report.json").json()
-        self.assertEqual(rep["report_format"], "veritas-x-report/1")
+        self.assertEqual(rep["report_format"], "pixelproof-report/1")
         self.assertEqual(len(rep["analyses"]), 1)
         a = rep["analyses"][0]
         self.assertEqual(a["result_id"], r["id"])

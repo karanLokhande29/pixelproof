@@ -172,7 +172,7 @@ class HashLedgerTests(unittest.TestCase):
         led = self._ledger(self.orig, self.png)
         blob = hv.export_ledger(led)
         doc = json.loads(blob)
-        self.assertEqual(doc["format"], "veritas-ledger/1")
+        self.assertEqual(doc["format"], "pixelproof-ledger/1")
         self.assertEqual(doc["signature"]["alg"], "SHA-256")
         self.assertIn("integrity-only", doc["signature"]["note"])
         got, rep = hv.import_ledger(blob)
@@ -235,7 +235,7 @@ class HashLedgerTests(unittest.TestCase):
         self.assertEqual(len(a), 2)  # input untouched
 
     def test_malformed_import(self):
-        for bad in (b"{}", b'{"format":"veritas-ledger/1","records":[{"id":1}]}'):
+        for bad in (b"{}", b'{"format":"pixelproof-ledger/1","records":[{"id":1}]}'):
             with self.assertRaises(ValueError):
                 hv.import_ledger(bad)
 

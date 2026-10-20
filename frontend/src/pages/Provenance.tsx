@@ -279,7 +279,7 @@ function Ledger({ c }: { c: Case }) {
           </Button>
         </div>
         {s && !s.signing.startsWith("HMAC") && (
-          <p className="text-[11px] text-dim">Exports carry an unkeyed SHA-256 digest: it detects accidental change only — anyone can edit and re-hash the file. Set <span className="font-mono">VERITAS_LEDGER_KEY</span> before starting the API for HMAC-SHA256 signing.</p>
+          <p className="text-[11px] text-dim">Exports carry an unkeyed SHA-256 digest: it detects accidental change only — anyone can edit and re-hash the file. Set <span className="font-mono">PIXELPROOF_LEDGER_KEY</span> before starting the API for HMAC-SHA256 signing.</p>
         )}
         {(add.error || chk.error || imp.error || clr.error) && <ErrorBox error={add.error ?? chk.error ?? imp.error ?? clr.error} />}
         {imp.data && (

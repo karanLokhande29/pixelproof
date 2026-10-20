@@ -1,6 +1,6 @@
-# Contributing to Veritas Forensic Image Analysis Toolkit
+# Contributing to PixelProof Forensic Image Analysis Toolkit
 
-Thank you for considering contributing to Veritas! This document provides guidelines and instructions for contributing.
+Thank you for considering contributing to PixelProof! This document provides guidelines and instructions for contributing.
 
 ---
 
@@ -416,7 +416,7 @@ If applicable
 
 - OS: [e.g., Windows 11]
 - Python version: [e.g., 3.10.11]
-- Veritas version: [e.g., 3.0.0]
+- PixelProof version: [e.g., 3.0.0]
 
 **Additional context**
 Any other relevant information
@@ -473,4 +473,4 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 ---
 
-**Thank you for contributing to Veritas! 🎉**
+**Thank you for contributing to PixelProof! 🎉**

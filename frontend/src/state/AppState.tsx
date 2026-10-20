@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Case, Job } from "../lib/types";
 
-const CASE_KEY = "veritasx.activeCase";
+const CASE_KEY = "pixelproof.activeCase";
 
 function readStored(): string | null {
   try {

@@ -8,7 +8,7 @@
 
 <div align="center">
 
-# Veritas Forensics
+# PixelProof Forensics
 
 ## Digital Image Forensic Analysis Toolkit
 
@@ -67,7 +67,7 @@ everyday social-media use. Editing tools and generative models make visual
 inspection inadequate, and **digital image forensics** studies the traces
 that capture, compression and editing leave in an image file.
 
-**Veritas Forensics** is a toolkit, begun as a semester project, that puts a
+**PixelProof Forensics** is a toolkit, begun as a semester project, that puts a
 set of published forensic techniques behind one Streamlit web interface.
 Version 3.0.0 rebuilt every technique on a published method with thresholds
 calibrated on seeded synthetic benchmarks. This report documents the
@@ -78,7 +78,7 @@ motivation, design and implementation.
 
 ## 4. Purpose of the Project
 
-Veritas supports **semi-automated forensic screening** of single images.
+PixelProof supports **semi-automated forensic screening** of single images.
 Rather than replacing experts, it:
 
 - visualises traces that are hard to see (error levels, noise levels,
@@ -303,7 +303,7 @@ graph LR
     Student((Student))
     Researcher((Researcher))
 
-    subgraph "Veritas"
+    subgraph "PixelProof"
         UC1[Upload image]
         UC2[Use bundled sample]
         UC3[Run a technique]
@@ -575,7 +575,7 @@ graph TB
             Assets[assets/ + Descriptions/]
             Config[.streamlit/config.toml]
             Secrets[secrets: LEDGER_KEY optional]
-            Tmp[System temp: veritas_* per session]
+            Tmp[System temp: pixelproof_* per session]
         end
     end
 
@@ -682,12 +682,12 @@ Limitations:
 - Resizing, strong recompression and format conversion remove most traces.
 - The synthetic-traces tab cannot identify AI-generated images.
 
-Veritas is suited to **screening and teaching**; high-stakes work needs
+PixelProof is suited to **screening and teaching**; high-stakes work needs
 specialised tools, provenance data and expert review.
 
 ## 20. Conclusion
 
-Veritas shows that an open-source toolkit can make published image-forensics
+PixelProof shows that an open-source toolkit can make published image-forensics
 methods accessible while being explicit about what each one can and cannot
 show. The 3.0.0 rebuild replaced heuristic scores with published methods,
 calibrated thresholds, a single result contract and per-session privacy.

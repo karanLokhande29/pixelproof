@@ -28,7 +28,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="flex items-center gap-2.5 px-5 py-5">
           <img src="/favicon.svg" alt="" className="h-8 w-8" />
           <div>
-            <div className="text-[15px] font-semibold tracking-wide text-ink">Veritas X</div>
+            <div className="text-[15px] font-semibold tracking-wide text-ink">PixelProof</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-faint">Evidence investigation</div>
           </div>
           <button className="ml-auto rounded p-1 text-dim lg:hidden" onClick={() => setNavOpen(false)} aria-label="Close navigation">
@@ -125,12 +125,12 @@ function AboutDialog({ onClose }: { onClose: () => void }) {
            className="max-h-[85vh] w-full max-w-xl overflow-auto rounded-xl border border-line2 bg-surface p-6 outline-none"
            onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between">
-          <h2 id="about-title" className="text-lg font-semibold">About Veritas X</h2>
+          <h2 id="about-title" className="text-lg font-semibold">About PixelProof</h2>
           <button onClick={onClose} className="rounded p-1 text-dim hover:bg-raised" aria-label="Close"><X className="h-4 w-4" /></button>
         </div>
         <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90">
           <p>
-            Veritas X is an explainable, multi-technique visual-evidence investigation workspace: cases, a forensic lab with
+            PixelProof is an explainable, multi-technique visual-evidence investigation workspace: cases, a forensic lab with
             registered overlays, side-by-side method comparison, provenance hashing and printable reports.
           </p>
           <p>
@@ -141,7 +141,7 @@ function AboutDialog({ onClose }: { onClose: () => void }) {
             Kirchner, Stamm &amp; Liu, Ker &amp; Böhme and others). The original Streamlit app remains available as a fallback.
           </p>
           <p>
-            <strong>New in Veritas X:</strong> the FastAPI adapter (case store with immutable originals, method registry, bounded job
+            <strong>New in PixelProof:</strong> the FastAPI adapter (case store with immutable originals, method registry, bounded job
             workers, serializer), this React interface, comparison and provenance workflows, and JSON/HTML reports.
           </p>
           <p className="text-caution">

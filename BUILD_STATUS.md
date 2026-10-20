@@ -1,4 +1,4 @@
-# VERITAS X — Build Status (durable state record)
+# PIXELPROOF — Build Status (durable state record)
 
 - **Start:** 2026-10-20 19:51:34 +05:30 (first command timestamp)
 - **Hard deadline (12 h):** 2026-10-21 07:51:34 +05:30
@@ -53,15 +53,15 @@
 - 20:27–20:32 Compare + Provenance pages; M3 e2e. Two test-script fixes (ambiguous selector; wrong assumption — the upstream sample *does* carry a C2PA test manifest, validation Invalid). App unchanged.
 - 20:36 Backend tests extended (all 14 techniques on targeted examples, PRNU refs, case switch during heavy job): 19/19.
 - 20:37 `npm run build` OK. Launch scripts (`launch/*.ps1`, root `*.bat`), `.gitignore` entries, packaging script.
-- 20:38 Cold restart via `start_veritas.bat` → single server on :8000 serves UI + API; 17 cases/results/artifacts persisted; old job IDs → 404 (UI reports "API restarted").
+- 20:38 Cold restart via `start_pixelproof.bat` → single server on :8000 serves UI + API; 17 cases/results/artifacts persisted; old job IDs → 404 (UI reports "API restarted").
 - 20:39 All e2e gates re-run on :8000 production build: m2, m3, m4 pass; m5 responsive found B006 (fixed, pass).
 - 20:44–20:52 Full regression `unittest discover` (161 tests, 406 s): upstream 142 OK; 1 new-test failure B008 (assertion), fixed; API tests 20/20 (incl. new HMAC ledger test).
 - 20:57 `launch/measure_runtimes.py` against live API → runtime table.
 - 20:59–21:01 P1 regions of interest (backend + viewer + report) with API and e2e tests.
-- 21:03 Feature freeze. `launch/package.ps1` → `dist_submission/veritas-x_20261020_2103.zip`.
+- 21:03 Feature freeze. `launch/package.ps1` → `dist_submission/pixelproof_20261020_2103.zip`.
 - 21:04–21:20 Clean-install test: first attempt in the very deep scratchpad path failed at Pillow DLL load (B010, Windows MAX_PATH); re-done in `dist_submission\ci` → setup OK, health OK, m2 + m4 pass; test dirs removed.
 - 21:21–21:28 Final `unittest discover`: 163 tests OK.
 - 21:29–21:34 Cold restart (API, Vite, Streamlit all healthy); demo journey ×2: 10/10 e2e pass. Demo script corrected (sample vs clone example = "no match", pHash 12).
-- 21:34 Final package `dist_submission/veritas-x_20261020_2134.zip` (11.6 MB) and checkpoint `checkpoints/m6_release_20261020.zip`.
+- 21:34 Final package `dist_submission/pixelproof_20261020_2134.zip` (11.6 MB) and checkpoint `checkpoints/m6_release_20261020.zip`.
 - **Completed at 21:34 +05:30 — 1 h 42 m elapsed of the 12 h budget.** All P0 gates PASS; one P1 (ROI) added; no fallback needed.
 - 20:32–20:34 Reports page; M4 e2e. Harness-only `TargetClosedError` from Edge popups ignored explicitly (all app assertions passed before it).

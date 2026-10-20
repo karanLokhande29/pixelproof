@@ -1,6 +1,6 @@
-# VERITAS X — Claude Code Master Prompt & Complete Execution Playbook
+# PIXELPROOF — Claude Code Master Prompt & Complete Execution Playbook
 
-> **Keep this file alongside `VERITAS_X_IMPLEMENTATION_PLAN.md` at the root of the extracted original repository.**  
+> **Keep this file alongside `PIXELPROOF_IMPLEMENTATION_PLAN.md` at the root of the extracted original repository.**  
 > The first section is the **ONE prompt to paste into Claude Code**. Claude should execute all phases autonomously, referring to this file and the implementation plan rather than waiting for each follow-up prompt.  
 > The remaining prompts are embedded, detailed phase specifications and optional recovery commands. They are **not** additional prompts you need to send in normal operation.  
 > **Build limit:** 12 hours, 1 person, 1 machine. Kaggle/GPU not needed. The original repo must be present or Claude Code must be allowed to download it.
@@ -10,11 +10,11 @@
 # MASTER PROMPT — COPY THIS SINGLE BLOCK INTO CLAUDE CODE
 
 ```text
-You are acting as the autonomous lead engineer, product designer, test engineer, and release manager for my B.Tech AI Computer Vision mini-project, VERITAS X — An Explainable Multi-Technique Visual Evidence Investigation Platform. You have ONE LOCAL WORKSTATION, ONE DEVELOPER (ME), and at most 12 HOURS OF ELAPSED WALL-CLOCK TIME. I want a complete, professional, working local application using the existing GitHub forensic-analysis engine, with a transformed highly interactive UI and meaningful integrated features.
+You are acting as the autonomous lead engineer, product designer, test engineer, and release manager for my B.Tech AI Computer Vision mini-project, PIXELPROOF — An Explainable Multi-Technique Visual Evidence Investigation Platform. You have ONE LOCAL WORKSTATION, ONE DEVELOPER (ME), and at most 12 HOURS OF ELAPSED WALL-CLOCK TIME. I want a complete, professional, working local application using the existing GitHub forensic-analysis engine, with a transformed highly interactive UI and meaningful integrated features.
 
 THE TWO LOCAL SPECIFICATIONS ARE YOUR CANONICAL INSTRUCTIONS:
-- VERITAS_X_IMPLEMENTATION_PLAN.md
-- VERITAS_X_CLAUDE_PROMPTS.md
+- PIXELPROOF_IMPLEMENTATION_PLAN.md
+- PIXELPROOF_CLAUDE_PROMPTS.md
 
 FIRST ACTIONS (DO THESE, WITHOUT ASKING ME TO REPEAT THEM):
 1. Print working directory, inspect files, and read BOTH Markdown specifications IN FULL, including master instructions, detailed phase prompts, gate checks, priority list, status contracts, error policy, and rollback strategy. Don't start inventing architecture before reading them.
@@ -65,7 +65,7 @@ For M1, demonstrate real API upload, run ELA and fetch generated image. For M2, 
 DELIVERABLES YOU WILL CREATE:
 - New backend/ and frontend/ folders, with original app/analysis modules preserved.
 - BUILD_STATUS.md and BUG_BACKLOG.md maintained during execution.
-- README_VERITAS_X.md with working setup commands and source acknowledgement.
+- README.md with working setup commands and source acknowledgement.
 - FINAL_BUILD_REPORT.md with actual completed vs deferred features, tests, steps to run, current known bugs and demo script.
 - Reproducible local launch scripts and properly ignored temp/generated files.
 - Optionally a sanitized submission archive (exclude .venv, node_modules, sample uploads, private files, credentials). If a ZIP is large or impractical, provide a packaging script instead.
@@ -196,7 +196,7 @@ Freeze scope except blocking fixes. Re-run upstream original tests, run new back
 # PHASE PROMPT M6 — Freeze and final release (automatically execute)
 
 ```text
-At elapsed 10 hours or sooner if P0 passes, stop adding features. Write README_VERITAS_X.md and FINAL_BUILD_REPORT.md based only on actually tested functionality; keep BUG_BACKLOG.md current. Test cold restart in new terminal: backend Uvicorn, frontend Vite, original Streamlit fallback. Ensure sample image and actual CV algorithms work after restart. Write exact startup commands for this OS/Python/Node version; include .gitignore, source credits/license, no private upload files and a 6–7 minute demo script. If packaging archive is created, exclude venv/node_modules/uploads/secrets. Print summary listing each P0 acceptance gate as PASS/FAIL/PARTIAL and full local URLs. Do not claim finished unless all core tests pass. If deadline hit, document truthfully what remains.
+At elapsed 10 hours or sooner if P0 passes, stop adding features. Write README.md and FINAL_BUILD_REPORT.md based only on actually tested functionality; keep BUG_BACKLOG.md current. Test cold restart in new terminal: backend Uvicorn, frontend Vite, original Streamlit fallback. Ensure sample image and actual CV algorithms work after restart. Write exact startup commands for this OS/Python/Node version; include .gitignore, source credits/license, no private upload files and a 6–7 minute demo script. If packaging archive is created, exclude venv/node_modules/uploads/secrets. Print summary listing each P0 acceptance gate as PASS/FAIL/PARTIAL and full local URLs. Do not claim finished unless all core tests pass. If deadline hit, document truthfully what remains.
 ```
 
 ---
@@ -206,7 +206,7 @@ At elapsed 10 hours or sooner if P0 passes, stop adding features. Write README_V
 ## R1 — Resume from checkpoint
 
 ```text
-Resume the VERITAS X build autonomously from the current repository. First reread VERITAS_X_IMPLEMENTATION_PLAN.md, VERITAS_X_CLAUDE_PROMPTS.md, BUILD_STATUS.md and BUG_BACKLOG.md. Inspect actual git diff and working tree, calculate remaining time from original recorded start. Verify the last passing gate with tests before continuing. Execute all remaining milestones without asking for routine confirmation. Apply the documented S0/S1 immediate fix and S2/S3 defer policies. Preserve original Streamlit fallback. Do not restart already completed work or fabricate progress.
+Resume the PIXELPROOF build autonomously from the current repository. First reread PIXELPROOF_IMPLEMENTATION_PLAN.md, PIXELPROOF_CLAUDE_PROMPTS.md, BUILD_STATUS.md and BUG_BACKLOG.md. Inspect actual git diff and working tree, calculate remaining time from original recorded start. Verify the last passing gate with tests before continuing. Execute all remaining milestones without asking for routine confirmation. Apply the documented S0/S1 immediate fix and S2/S3 defer policies. Preserve original Streamlit fallback. Do not restart already completed work or fabricate progress.
 ```
 
 ## R2 — Too many bugs / continuous failure loop
@@ -218,7 +218,7 @@ Stop adding features. Read BUG_BACKLOG.md, classify highest-impact reproducible 
 ## R3 — React integration nonfunctional at hour 8
 
 ```text
-Time-based fallback activated: abandon the nonworking React UI as the demo route and enhance original Streamlit app.py into a coherent Veritas X experience while keeping analysis/ unchanged. Reorganize navigation into Dashboard, Forensic Lab, Compare, Provenance, Reports; use st.session_state for case/results and real method outputs. Preserve original result renderer, add case notes, an interactive gallery and JSON/printable HTML reports. Keep all findings/limitations. Complete tests and produce FINAL_BUILD_REPORT.md explicitly documenting the fallback. Do not present React as finished.
+Time-based fallback activated: abandon the nonworking React UI as the demo route and enhance original Streamlit app.py into a coherent PixelProof experience while keeping analysis/ unchanged. Reorganize navigation into Dashboard, Forensic Lab, Compare, Provenance, Reports; use st.session_state for case/results and real method outputs. Preserve original result renderer, add case notes, an interactive gallery and JSON/printable HTML reports. Keep all findings/limitations. Complete tests and produce FINAL_BUILD_REPORT.md explicitly documenting the fallback. Do not present React as finished.
 ```
 
 ## R4 — Install/dependency failure
@@ -236,7 +236,7 @@ The app already works. Make ONLY low-risk presentational improvements: consisten
 ## R6 — Final QA audit
 
 ```text
-Act as a strict skeptical examiner. Inspect the actual running app and docs. For each 20 tests T01–T20 in VERITAS_X_IMPLEMENTATION_PLAN.md, mark PASS/FAIL/PARTIAL/NOT TESTED with concrete evidence. Catch fake scores, broken controls, stale outputs, wrong source images, inappropriate overlays, unsupported formats misreported as clean, wrong file hashes, unescaped report notes and malformed export links. Fix only S0/S1; log the rest. Produce a revised FINAL_BUILD_REPORT.md reflecting reality.
+Act as a strict skeptical examiner. Inspect the actual running app and docs. For each 20 tests T01–T20 in PIXELPROOF_IMPLEMENTATION_PLAN.md, mark PASS/FAIL/PARTIAL/NOT TESTED with concrete evidence. Catch fake scores, broken controls, stale outputs, wrong source images, inappropriate overlays, unsupported formats misreported as clean, wrong file hashes, unescaped report notes and malformed export links. Fix only S0/S1; log the rest. Produce a revised FINAL_BUILD_REPORT.md reflecting reality.
 ```
 
 ---
@@ -289,7 +289,7 @@ Act as a strict skeptical examiner. Inspect the actual running app and docs. For
 At the end of the run, Claude Code should show:
 
 ```text
-VERITAS X BUILD SUMMARY
+PIXELPROOF BUILD SUMMARY
 Started: <actual time>
 Finished: <actual time>
 Elapsed: <real hours/minutes>

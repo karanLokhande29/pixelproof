@@ -1,4 +1,4 @@
-# Veritas X one-time setup (Windows PowerShell 5.1+). Run from anywhere:
+# PixelProof one-time setup (Windows PowerShell 5.1+). Run from anywhere:
 #   powershell -ExecutionPolicy Bypass -File launch\setup.ps1
 # Creates .venv, installs the upstream pins + API layer, installs and builds the UI.
 $ErrorActionPreference = "Stop"
@@ -21,4 +21,4 @@ if ($LASTEXITCODE -ne 0) { Pop-Location; throw "npm ci failed" }
 npm run build
 if ($LASTEXITCODE -ne 0) { Pop-Location; throw "frontend build failed" }
 Pop-Location
-Write-Host "`nSetup complete. Start with: start_veritas.bat  (then open http://127.0.0.1:8000)" -ForegroundColor Green
+Write-Host "`nSetup complete. Start with: start_pixelproof.bat  (then open http://127.0.0.1:8000)" -ForegroundColor Green

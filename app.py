@@ -20,7 +20,7 @@ warnings.simplefilter("error", Image.DecompressionBombWarning)
 MAX_CACHED_RESULTS = 3  # results hold image arrays; bound per-session memory
 STALE_SESSION_S = 3600  # sweep other sessions' temp dirs older than this
 
-st.set_page_config(page_title="Veritas - Digital Forensics",
+st.set_page_config(page_title="PixelProof - Digital Forensics",
                    page_icon=":material/search:", layout="wide")
 
 DEFAULT_SAMPLE_IMAGE = os.path.join("assets", "sample images", "sampleImg.jpeg")
@@ -35,7 +35,7 @@ def workdir():
     d = st.session_state.get("workdir")
     if not d or not os.path.isdir(d):
         _sweep_stale_workdirs()
-        d = tempfile.mkdtemp(prefix="veritas_")
+        d = tempfile.mkdtemp(prefix="pixelproof_")
         st.session_state.workdir = d
     return d
 
@@ -48,7 +48,7 @@ def _sweep_stale_workdirs():
     for name in os.listdir(root):
         p = os.path.join(root, name)
         try:
-            if name.startswith("veritas_") and os.path.isdir(p) \
+            if name.startswith("pixelproof_") and os.path.isdir(p) \
                     and now - os.path.getmtime(p) > STALE_SESSION_S:
                 shutil.rmtree(p, ignore_errors=True)
         except OSError:
@@ -163,7 +163,7 @@ def describe(name):
 
 
 # ── Sidebar ───────────────────────────────────────────────────────
-st.sidebar.markdown("#### Veritas")
+st.sidebar.markdown("#### PixelProof")
 uploaded = st.sidebar.file_uploader("Upload an image to analyse",
                                     type=["jpg", "jpeg", "png"])
 try:
@@ -220,7 +220,7 @@ if file_path is not None:
         st.error(f"Could not read this file as an image: {e}")
         st.stop()
 
-st.title("Veritas — image forensics")
+st.title("PixelProof — image forensics")
 st.info(
     "Every result here is an **indicator, not proof**. Each test detects one "
     "kind of trace under stated conditions; a clean result means only that "
@@ -390,7 +390,7 @@ with tabs[11]:
     with e1:
         st.download_button(
             "Export ledger", hv.export_ledger(ledger, key),
-            file_name="veritas-ledger.json", mime="application/json",
+            file_name="pixelproof-ledger.json", mime="application/json",
             disabled=not ledger)
         st.caption("Signed with HMAC-SHA256 (server key)" if key else
                    "Unkeyed SHA-256 digest: detects accidental change only — "
@@ -409,9 +409,9 @@ with tabs[11]:
                 st.error(f"Import failed: {e}")
 
 with tabs[12]:
-    st.subheader("About Veritas")
+    st.subheader("About PixelProof")
     st.markdown("""
-Veritas runs published image-forensics techniques and reports what each one
+PixelProof runs published image-forensics techniques and reports what each one
 measured. It does not output an overall authenticity verdict: no combination
 of these tests can certify that an image is unedited.
 

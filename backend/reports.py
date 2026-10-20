@@ -12,14 +12,14 @@ from PIL import Image
 
 from .cases import now_utc
 
-REPORT_FORMAT = "veritas-x-report/1"
+REPORT_FORMAT = "pixelproof-report/1"
 DISCLAIMER = ("Every result is an indicator, not proof. Each technique detects one kind of "
               "trace under stated conditions; a result without findings means only that this "
               "test found no inconsistency at its sensitivity. This report contains no overall "
               "authenticity verdict, probability or legal-admissibility assessment.")
 ATTRIBUTION = ("Forensic algorithms: Veritas / Forensic-Image-Analysis-Toolkit by Rafay Adeel "
                "(BSD 3-Clause, https://github.com/CodeRafay/Forensic-Image-Analysis-Toolkit). "
-               "Veritas X case workflow, API adapter, UI and reports are an integration layer "
+               "PixelProof case workflow, API adapter, UI and reports are an integration layer "
                "around those unmodified modules.")
 MAX_HTML_TABLE_ROWS = 60
 
@@ -150,9 +150,9 @@ def render_html(store, case, report):
     thumb = _thumb_data_uri(store.original_path(case))
     parts = [f"<!doctype html><html lang='en'><head><meta charset='utf-8'>"
              f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
-             f"<title>Veritas X report — {e(case['title'])}</title><style>{CSS}</style></head><body>",
+             f"<title>PixelProof report — {e(case['title'])}</title><style>{CSS}</style></head><body>",
              "<p class='noprint muted'>Use your browser's Print command to save this report as PDF.</p>",
-             f"<h1>Veritas X — case report</h1><p class='muted'>Case {e(case['id'])} · generated {e(report['generated_utc'])} · {e(report['selection'])}</p>",
+             f"<h1>PixelProof — case report</h1><p class='muted'>Case {e(case['id'])} · generated {e(report['generated_utc'])} · {e(report['selection'])}</p>",
              f"<p class='disclaimer'><strong>Read first.</strong> {e(DISCLAIMER)}</p>",
              "<h2>Case</h2><table class='kv'>",
              f"<tr><th>Title</th><td>{e(case['title'])}</td></tr>",

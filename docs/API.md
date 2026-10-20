@@ -1,4 +1,4 @@
-# API Reference — Veritas analysis modules
+# API Reference — PixelProof analysis modules
 
 Every technique lives in its own module under `analysis/`. The package imports
 sub-modules lazily (`import analysis; analysis.ela.analyze_ela(...)` loads
@@ -305,8 +305,8 @@ Guide: [Hash_Verification.md](../Descriptions/Hash_Verification.md).
 | `verify_chain(ledger)` | `{valid, broken_at, n}` — consistency check; anyone can recompute a whole chain. |
 | `ledger_stats(ledger)` | `{records, first_utc, last_utc, total_bytes, chain_valid}` |
 | `verify_image(ledger, path, threshold=10)` | Result contract. Each record is `byte-identical` (SHA-256), `pixel-identical`, `visually similar` (pHash distance ≤ `threshold` bits of 64 — **not** integrity) or `no match`. Metrics: `Ledger records`, `Byte-identical matches`, `Pixel-identical matches`, `Visually similar matches`, `Similarity threshold (bits of 64)`, `Best phash/dhash/ahash distance (bits of 64)`. Tables: `Top matches`, `Query hashes`. `insufficient_data` for an empty ledger. |
-| `export_ledger(ledger, key=None)` | JSON `bytes` (`format: "veritas-ledger/1"`). With `key` (bytes) signed HMAC-SHA256; without, a plain SHA-256 digest that detects accidental change only. |
-| `import_ledger(data, key=None, into=None)` | `(ledger, report)`. Nothing merges if the signature/digest or imported chain fails. Merged records are re-linked onto `into`'s tail (old hash kept as `original_record_hash`) and deduplicated by SHA-256. `report`: `signature_valid` (True/False/None), `digest_ok`, `signature_alg`, `chain_valid`, `accepted`, `merged`, `duplicates_skipped`, `message`. Raises `ValueError` on a file that is not a veritas ledger. |
+| `export_ledger(ledger, key=None)` | JSON `bytes` (`format: "pixelproof-ledger/1"`). With `key` (bytes) signed HMAC-SHA256; without, a plain SHA-256 digest that detects accidental change only. |
+| `import_ledger(data, key=None, into=None)` | `(ledger, report)`. Nothing merges if the signature/digest or imported chain fails. Merged records are re-linked onto `into`'s tail (old hash kept as `original_record_hash`) and deduplicated by SHA-256. `report`: `signature_valid` (True/False/None), `digest_ok`, `signature_alg`, `chain_valid`, `accepted`, `merged`, `duplicates_skipped`, `message`. Raises `ValueError` on a file that is not a pixelproof ledger. |
 
 The app reads the HMAC key from `st.secrets["LEDGER_KEY"]` when configured.
 

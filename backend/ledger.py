@@ -5,7 +5,7 @@ the ledger is kept in build_artifacts/ledger.json on this machine. It records
 that a file with these hashes was seen; it is not a trusted timestamp or a
 legal chain of custody.
 
-Optional HMAC key: environment variable VERITAS_LEDGER_KEY. Without it,
+Optional HMAC key: environment variable PIXELPROOF_LEDGER_KEY. Without it,
 exports carry a plain SHA-256 digest that only detects accidental change.
 """
 import os
@@ -19,7 +19,7 @@ LEDGER_PATH = STORAGE_ROOT / "ledger.json"
 
 
 def ledger_key():
-    k = os.environ.get("VERITAS_LEDGER_KEY")
+    k = os.environ.get("PIXELPROOF_LEDGER_KEY")
     return k.encode() if k else None
 
 

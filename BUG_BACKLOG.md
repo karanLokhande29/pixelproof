@@ -1,4 +1,4 @@
-# VERITAS X — Bug Backlog
+# PIXELPROOF — Bug Backlog
 
 Severity: S0 blocker (fix now) · S1 small/local (fix now) · S2 nonblocking (log, batch-fix later) · S3 enhancement (defer).
 

@@ -1,4 +1,4 @@
-# Veritas X — Final Build Report
+# PixelProof — Final Build Report
 
 | | |
 |---|---|
@@ -63,7 +63,7 @@ Everything below was executed on this machine; numbers are copied from the logs 
 - Compare: 2–3 same-case results, per-column zoomable image, metrics, findings, limitations, notes; no aggregate.
 - Provenance: SHA-256/512, MD5 (legacy), pixel SHA-256, pHash/dHash/aHash; same bytes / same pixels /
   similar-looking; compare upload or bundled image; metadata + offline C2PA card; ledger add/check/export/import/clear
-  (unkeyed digest or HMAC with `VERITAS_LEDGER_KEY`).
+  (unkeyed digest or HMAC with `PIXELPROOF_LEDGER_KEY`).
 - Reports: case title/description/notes, include/exclude results, per-method outcome counts (not a score),
   JSON download, printable HTML (open or download), example-challenge guide; regions drawn on the report thumbnail.
 - Original Streamlit app (`start_streamlit_fallback.bat`) unchanged and running.
@@ -117,7 +117,7 @@ From `build_artifacts/logs/runtimes.md` (`launch/measure_runtimes.py`):
 
 - **Borrowed, unmodified:** `analysis/` (all algorithms), `Descriptions/`, `assets/`, `scripts/`, `docs/`,
   upstream `tests/test_*.py`, `app.py`, `LICENSE` — Rafay Adeel, BSD 3-Clause.
-- **New:** `backend/`, `frontend/`, `tests/test_api.py`, `frontend/e2e/`, `launch/`, `*.bat`, `README_VERITAS_X.md`,
+- **New:** `backend/`, `frontend/`, `tests/test_api.py`, `frontend/e2e/`, `launch/`, `*.bat`, `README.md`,
   `BUILD_STATUS.md`, `BUG_BACKLOG.md`, this report. Upstream `.gitignore` gained ignore entries only.
 
 ## 6. Data and models — honest statement
@@ -130,21 +130,21 @@ accuracy is claimed. Real-dataset validation (CoMoFoD, CASIA v2, Dresden) is fut
 ## 7. Run it
 
 ```bat
-setup_veritas.bat               :: once (≈7 min: venv, pip, npm ci, UI build)
-start_veritas.bat               :: http://127.0.0.1:8000   (API docs: /docs)
+setup_pixelproof.bat               :: once (≈7 min: venv, pip, npm ci, UI build)
+start_pixelproof.bat               :: http://127.0.0.1:8000   (API docs: /docs)
 start_streamlit_fallback.bat    :: original app, http://localhost:8501
 ```
 
 Dev mode with hot reload: `powershell -ExecutionPolicy Bypass -File launch\dev.ps1` → http://127.0.0.1:5173.
-Sanitized archive: `powershell -ExecutionPolicy Bypass -File launch\package.ps1` → `dist_submission\veritas-x_<stamp>.zip`
+Sanitized archive: `powershell -ExecutionPolicy Bypass -File launch\package.ps1` → `dist_submission\pixelproof_<stamp>.zip`
 (excludes `.venv`, `node_modules`, `frontend/dist`, `build_artifacts`, `checkpoints`, caches, secrets).
 
 ## 8. Demo script (6–7 minutes, all live)
 
-Before: `start_veritas.bat`; open http://127.0.0.1:8000; optionally clear old cases.
+Before: `start_pixelproof.bat`; open http://127.0.0.1:8000; optionally clear old cases.
 
 1. **0:00–0:45 — Problem and contribution.** Dashboard: status chips (14 modules, offline C2PA). Say: the
-   algorithms are Rafay Adeel's published-method implementations (About & credits); Veritas X adds the case
+   algorithms are Rafay Adeel's published-method implementations (About & credits); PixelProof adds the case
    workflow, API, viewer, comparison, provenance and reports. Point at "indicator, not proof".
 2. **0:45–1:30 — Copy-move.** Example challenges → *Cloned block of the city* → Open as case. Show SHA-256 on
    the case. In the Lab press **Run** (≈15–20 s; show the honest elapsed timer and that you can click Dashboard

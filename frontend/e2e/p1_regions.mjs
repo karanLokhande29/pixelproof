@@ -42,7 +42,7 @@ await page.getByText("documented clone target <copy B>").first().waitFor();
 check(true, "region saved and listed");
 await page.screenshot({ path: resolve(ROOT, "build_artifacts", "screenshots", "p1_region.png") });
 
-const caseId = await page.evaluate(() => localStorage.getItem("veritasx.activeCase"));
+const caseId = await page.evaluate(() => localStorage.getItem("pixelproof.activeCase"));
 const html = await (await page.request.get(`${BASE}/api/cases/${caseId}/report.html`)).text();
 check(/<rect x='\d+' y='\d+'/.test(html) && html.includes("documented clone target &lt;copy B&gt;"), "report draws the region and escapes its label");
 await browser.close();

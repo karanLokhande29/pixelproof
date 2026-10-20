@@ -24,7 +24,7 @@ from . import registry, worker
 from .cases import now_utc
 from .storage import case_dir, new_id
 
-log = logging.getLogger("veritas.jobs")
+log = logging.getLogger("pixelproof.jobs")
 LANES = {"quick": 2, "heavy": 1}
 MAX_JOBS_KEPT = 500
 ACTIVE = ("queued", "running")
@@ -45,7 +45,7 @@ class JobManager:
         self.lock = threading.RLock()
         self.jobs = OrderedDict()
         self.procs = {lane: ProcessPoolExecutor(max_workers=n) for lane, n in LANES.items()}
-        self.dispatch = {lane: ThreadPoolExecutor(max_workers=n, thread_name_prefix=f"veritas-{lane}")
+        self.dispatch = {lane: ThreadPoolExecutor(max_workers=n, thread_name_prefix=f"pixelproof-{lane}")
                          for lane, n in LANES.items()}
 
     def shutdown(self):

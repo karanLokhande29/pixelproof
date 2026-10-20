@@ -1,13 +1,13 @@
-# VERITAS X — Single-Paste Claude Code Master Prompt
+# PIXELPROOF — Single-Paste Claude Code Master Prompt
 
-> **Setup:** Download the original source ZIP, extract it, and copy `VERITAS_X_IMPLEMENTATION_PLAN.md` and `VERITAS_X_CLAUDE_PROMPTS.md` into its root. Open Claude Code **from that root**. Paste only the prompt below. The entire workflow and automatic bug triage are handled by that prompt and the two files.
+> **Setup:** Download the original source ZIP, extract it, and copy `PIXELPROOF_IMPLEMENTATION_PLAN.md` and `PIXELPROOF_CLAUDE_PROMPTS.md` into its root. Open Claude Code **from that root**. Paste only the prompt below. The entire workflow and automatic bug triage are handled by that prompt and the two files.
 
 ```text
-You are acting as the autonomous lead engineer, product designer, test engineer, and release manager for my B.Tech AI Computer Vision mini-project, VERITAS X — An Explainable Multi-Technique Visual Evidence Investigation Platform. You have ONE LOCAL WORKSTATION, ONE DEVELOPER (ME), and at most 12 HOURS OF ELAPSED WALL-CLOCK TIME. I want a complete, professional, working local application using the existing GitHub forensic-analysis engine, with a transformed highly interactive UI and meaningful integrated features.
+You are acting as the autonomous lead engineer, product designer, test engineer, and release manager for my B.Tech AI Computer Vision mini-project, PIXELPROOF — An Explainable Multi-Technique Visual Evidence Investigation Platform. You have ONE LOCAL WORKSTATION, ONE DEVELOPER (ME), and at most 12 HOURS OF ELAPSED WALL-CLOCK TIME. I want a complete, professional, working local application using the existing GitHub forensic-analysis engine, with a transformed highly interactive UI and meaningful integrated features.
 
 THE TWO LOCAL SPECIFICATIONS ARE YOUR CANONICAL INSTRUCTIONS:
-- VERITAS_X_IMPLEMENTATION_PLAN.md
-- VERITAS_X_CLAUDE_PROMPTS.md
+- PIXELPROOF_IMPLEMENTATION_PLAN.md
+- PIXELPROOF_CLAUDE_PROMPTS.md
 
 FIRST ACTIONS (DO THESE, WITHOUT ASKING ME TO REPEAT THEM):
 1. Print working directory, inspect files, and read BOTH Markdown specifications IN FULL, including master instructions, detailed phase prompts, gate checks, priority list, status contracts, error policy, and rollback strategy. Don't start inventing architecture before reading them.
@@ -58,7 +58,7 @@ For M1, demonstrate real API upload, run ELA and fetch generated image. For M2, 
 DELIVERABLES YOU WILL CREATE:
 - New backend/ and frontend/ folders, with original app/analysis modules preserved.
 - BUILD_STATUS.md and BUG_BACKLOG.md maintained during execution.
-- README_VERITAS_X.md with working setup commands and source acknowledgement.
+- README.md with working setup commands and source acknowledgement.
 - FINAL_BUILD_REPORT.md with actual completed vs deferred features, tests, steps to run, current known bugs and demo script.
 - Reproducible local launch scripts and properly ignored temp/generated files.
 - Optionally a sanitized submission archive (exclude .venv, node_modules, sample uploads, private files, credentials). If a ZIP is large or impractical, provide a packaging script instead.

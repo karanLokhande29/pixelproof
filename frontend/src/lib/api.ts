@@ -14,7 +14,7 @@ async function request<T>(url: string, init?: RequestInit): Promise<T> {
   try {
     res = await fetch(url, init);
   } catch {
-    throw new ApiError(0, "Cannot reach the Veritas X API. Is the backend running on port 8000?");
+    throw new ApiError(0, "Cannot reach the PixelProof API. Is the backend running on port 8000?");
   }
   if (!res.ok) {
     let msg = `${res.status} ${res.statusText}`;

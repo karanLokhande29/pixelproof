@@ -47,7 +47,7 @@ htmlcov/
 tests/test_images/
 tests/test_*_images/
 
-# Veritas X (added): case evidence, results, logs, local checkpoints, UI build
+# PixelProof (added): case evidence, results, logs, local checkpoints, UI build
 build_artifacts/
 checkpoints/
 frontend/node_modules/
