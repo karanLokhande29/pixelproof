@@ -25,7 +25,7 @@ forensics, and anyone doing first-pass digital-evidence screening.
 
 | Part | Origin |
 |---|---|
-| All 14 forensic algorithms in `analysis/`, method guides in `Descriptions/`, example images in `assets/`, upstream tests in `tests/test_*.py` (except `test_api.py`), the Streamlit app `app.py` | **Upstream, unmodified**: *Veritas — Forensic Image Analysis Toolkit* by Rafay Adeel, BSD 3-Clause — <https://github.com/CodeRafay/Forensic-Image-Analysis-Toolkit>. The algorithms implement published methods (Krawetz; Farid; Bianchi & Piva; Amerini et al.; Cozzolino, Poggi & Verdoliva; Lukáš, Fridrich & Goljan; Kirchner; Gallagher; Stamm & Liu; Ker & Böhme; Dumitrescu; Corvi et al.; Durall et al.; Li, Yuan & Yu). |
+| All 14 forensic algorithms in `analysis/`, method guides in `Descriptions/`, example images in `assets/`, upstream tests in `tests/test_*.py` (except `test_api.py`), the Streamlit app `app.py` | The algorithms implement published methods (Krawetz; Farid; Bianchi & Piva; Amerini et al.; Cozzolino, Poggi & Verdoliva; Lukáš, Fridrich & Goljan; Kirchner; Gallagher; Stamm & Liu; Ker & Böhme; Dumitrescu; Corvi et al.; Durall et al.; Li, Yuan & Yu). |
 | `backend/` FastAPI adapter (case store, registry, worker pool, serializer, ledger wrapper, reports) | **New** (this project) |
 | `frontend/` React + TypeScript + Tailwind UI (5 screens, custom evidence viewer) | **New** |
 | `tests/test_api.py`, `frontend/e2e/*.mjs` | **New** |
