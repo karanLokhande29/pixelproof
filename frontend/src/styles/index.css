@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #0b0f17;
+  color: #e6eef7;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+*:focus-visible {
+  outline: 2px solid #57c9c0;
+  outline-offset: 2px;
+}
+
+/* Checkerboard behind images so transparency and image bounds are visible. */
+.checker {
+  background-color: #070a10;
+  background-image: linear-gradient(45deg, #0d121b 25%, transparent 25%),
+    linear-gradient(-45deg, #0d121b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #0d121b 75%),
+    linear-gradient(-45deg, transparent 75%, #0d121b 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+}
+
+/* Evidence thumbnails are shown in stored pixel order everywhere. */
+img.evidence {
+  image-orientation: none;
+}
+
+input[type="range"] {
+  accent-color: #57c9c0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #253449;
+  border-radius: 6px;
+  border: 2px solid #0b0f17;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Rendered method guides (Descriptions/*.md) */
+.prose-vx {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgb(230 238 247 / 0.9);
+}
+.prose-vx h1 { font-size: 18px; font-weight: 600; margin: 0 0 10px; color: #e6eef7; }
+.prose-vx h2 { font-size: 15px; font-weight: 600; margin: 18px 0 8px; color: #e6eef7; }
+.prose-vx h3 { font-size: 14px; font-weight: 600; margin: 14px 0 6px; color: #e6eef7; }
+.prose-vx p { margin: 0 0 10px; }
+.prose-vx ul, .prose-vx ol { margin: 0 0 10px 20px; }
+.prose-vx ul { list-style: disc; }
+.prose-vx ol { list-style: decimal; }
+.prose-vx li { margin: 2px 0; }
+.prose-vx code { font-family: Consolas, monospace; font-size: 12px; background: #16212f; padding: 1px 4px; border-radius: 4px; }
+.prose-vx pre { background: #16212f; padding: 10px; border-radius: 6px; overflow: auto; margin: 0 0 10px; }
+.prose-vx pre code { background: none; padding: 0; }
+.prose-vx a { color: #57c9c0; text-decoration: underline; }
+.prose-vx table { border-collapse: collapse; margin: 0 0 12px; font-size: 12px; display: block; overflow-x: auto; }
+.prose-vx th, .prose-vx td { border: 1px solid #253449; padding: 4px 8px; text-align: left; }
+.prose-vx th { background: #16212f; }
+.prose-vx blockquote { border-left: 3px solid #e5aa59; padding-left: 10px; color: #91a0b5; margin: 0 0 10px; }
+.prose-vx strong { color: #e6eef7; }

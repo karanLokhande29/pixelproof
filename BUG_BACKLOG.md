@@ -1,0 +1,16 @@
+# VERITAS X — Bug Backlog
+
+Severity: S0 blocker (fix now) · S1 small/local (fix now) · S2 nonblocking (log, batch-fix later) · S3 enhancement (defer).
+
+| ID | Time | Sev | Scope | Reproduction | Expected | Actual | Checkpoint | Status | Fix evidence |
+|---|---|---|---|---|---|---|---|---|---|
+| B001 | 19:52 | S2 | env | `py --list`; only Python 3.12.10 present | Python 3.10 per `.python-version` | 3.10 unavailable | M0 | resolved — all exact pins install on 3.12 | 142/142 upstream tests OK on 3.12 |
+| B002 | 19:52 | S2 | env | `git --version` | git for checkpoints | not installed | M0 | workaround: ZIP checkpoints in `checkpoints/` | |
+| B004 | 20:21 | S1 | frontend Lab | Run Copy-Move, click Dashboard, click Forensic Lab while job runs | Lab returns to Copy-Move and shows its result when done | Lab reopened on default ELA; finished CMFD result not shown | M2 | **fixed** 20:24 | Lab method remembered in AppState; `e2e/m2_lab.mjs` passes (CMFD shown after navigating away/back) |
+| B005 | 20:26 | S2 | perf | CMFD on copy_move_clone.jpg (1024x576) | ~7 s (first smoke run) | 14–28 s per run, both direct and in worker pool (`scratchpad/time_cmfd.py`: direct 14.9/19.2 s, pool 14.1/15.1 s) | M5 | open — inherent algorithm cost on this laptop, not the job layer; UI shows honest elapsed time and stays navigable | |
+| B006 | 20:40 | S1 | frontend Dashboard | `node e2e/m5_responsive_a11y.mjs` at 390 px | no horizontal overflow | Dashboard 134 px wider than viewport (implicit `auto` grid track grew to content min-width) | M5 | **fixed** 20:41 | explicit `grid-cols-[minmax(0,1fr)]` on mobile; test re-run: 0 px overflow on all 5 screens at 390 and 820 px |
+| B007 | 20:38 | S3 | test harness | `e2e/m4_reports.mjs` in Edge | clean exit | Playwright `TargetClosedError` unhandled rejection from a transient popup target after all assertions passed | M4 | handled in harness only (ignores exactly that error type) | app assertions unaffected |
+| B008 | 20:53 | S1 | tests | `unittest discover` after `frontend/dist` exists | traversal probes return 404/422 | `/api/cases/../../etc/passwd` → 200 (client normalises to `/etc/passwd`; SPA fallback returns index.html — no file leak) | M5 | **fixed** (test assertion) 20:55 | test now asserts any 200 is the SPA shell and never file contents; added SPA escape probes; 20/20 API tests pass |
+| B009 | 20:50 | S1 | API honesty | `GET /api/health` | label matches what is checked | field `importable` only checked module presence (`find_spec`) | M5 | **fixed** | renamed `module_found` / `all_technique_modules_found`; UI says "present" |
+| B010 | 21:12 | S2 | deployment (Windows) | install into a very deep folder (~180-char base path), start API | starts | `ImportError: DLL load failed while importing _imaging: The filename or extension is too long` (Pillow DLL path > 260 chars, Windows MAX_PATH) | M6 | documented (README troubleshooting); not an app defect | same package installed in a shorter path: setup OK, health OK, m2 + m4 e2e pass |
+| B003 | 19:57 | S2 | upstream tests | `python -m pytest` | pytest runs | `unrecognized arguments: --cov=...` (pytest.ini needs pytest-cov, absent from requirements.txt) | M0 | worked around (not an upstream code change): use `python -m unittest discover -s tests -t .` or `pytest -o addopts=""` | 142 OK via unittest |

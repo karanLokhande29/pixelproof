@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Temporary files
+temp/
+*.tmp
+
+# Logs
+*.log
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+# Fixture images built at test time. Each test class cleans up after itself,
+# but an interrupted run leaves them behind - they must never be committed.
+tests/test_images/
+tests/test_*_images/
+
+# Veritas X (added): case evidence, results, logs, local checkpoints, UI build
+build_artifacts/
+checkpoints/
+frontend/node_modules/
+frontend/dist/
+dist_submission/
+.env
+
+# Hash verification database (temporary)
+temp/hash_database.json
+hash_database_export_*.json
